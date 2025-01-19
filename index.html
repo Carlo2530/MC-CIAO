@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciao</title>
+    <title>Ciao con Immagine</title>
     <style>
         body {
-            background-color: red;
+            background-color: yellow;
             display: flex;
+            flex-direction: column; /* Dispone gli elementi in colonna */
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            text-align: center; /* Centra il testo orizzontalmente */
         }
-        
+
+        img {
+            max-width: 300px; /* Imposta la larghezza massima dell'immagine */
+            max-height: 300px; /* Imposta l'altezza massima dell'immagine */
+            margin-bottom: 20px; /* Spazio sotto l'immagine */
+        }
+
         h1 {
-           font-size: 5em; /* Puoi modificare la grandezza del testo */
-           color: black; /* Puoi cambiare il colore del testo */
+           font-size: 5em;
+           color: black;
         }
     </style>
 </head>
 <body>
-    <h1>CIAO GIGLÜÜÜLA <3</h1>
+    <img src="immagine.jpg" alt="Descrizione dell'immagine">
+    <h1>CIAO</h1>
 </body>
 </html>
