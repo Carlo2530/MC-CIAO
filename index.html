@@ -9,22 +9,21 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', monospace;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
             background: #ffffff;
-            color: #000000;
+            color: #ffffff; /* Testo bianco */
             line-height: 1.6;
         }
 
-        /* Header struttura */
+        /* Header trasparente */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 2rem;
-            border-bottom: 1px solid #000000;
             position: fixed;
             width: 100%;
             top: 0;
@@ -32,7 +31,7 @@
             z-index: 1000;
         }
 
-        /* Tabella progetti */
+        /* Tabella invisibile */
         .projects-table {
             margin-top: 6rem;
             width: 100%;
@@ -43,27 +42,19 @@
         .projects-table td {
             padding: 1.2rem 2rem;
             text-align: left;
-            border-bottom: 1px solid #000000;
             cursor: pointer;
         }
 
-        .sortable:hover {
-            background: #f8f8f8;
-        }
-
-        /* About section */
-        #about-content {
-            display: none;
-            padding: 6rem 2rem;
-            max-width: 600px;
-            margin: 0 auto;
+        /* Allineamento header e corpo */
+        .projects-table th {
+            font-weight: normal;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="name">CARLO MARANGONI</div>
+        <div class="name">NOME COGNOME</div>
         <div class="about" onclick="toggleAbout()">About</div>
         <div class="title">PROGETTISTA LEAD</div>
     </div>
@@ -72,7 +63,7 @@
     <table class="projects-table">
         <thead>
             <tr>
-                <th onclick="sortTable(0)">Progetto</th>
+                <th onclick="sortTable(0)">Nome Progetto</th>
                 <th onclick="sortTable(1)">Tipologia</th>
                 <th onclick="sortTable(2)">Data</th>
             </tr>
@@ -81,51 +72,46 @@
             <tr>
                 <td>Torre Panoramica</td>
                 <td>Architettura</td>
-                <td>2023-09-01</td>
+                <td>2023</td>
             </tr>
             <tr>
                 <td>Parco Urbano</td>
                 <td>Urbanistica</td>
-                <td>2022-05-15</td>
+                <td>2022</td>
             </tr>
-            <!-- Aggiungi altri progetti -->
         </tbody>
     </table>
 
-    <!-- Sezione About -->
-    <div id="about-content">
+    <!-- About Section -->
+    <div id="about-content" style="display: none; padding: 6rem 2rem;">
         <h2>About</h2>
-        <p>Testo descrittivo sulla tua metodologia progettuale...</p>
+        <p>Testo minimalista sulla tua filosofia progettuale...</p>
     </div>
 
     <script>
-        // Funzione per ordinare la tabella
+        // Funzione di ordinamento semplificata
         function sortTable(column) {
             const table = document.querySelector('.projects-table');
-            const rows = Array.from(table.rows).slice(1);
-            const isAsc = table.rows[0].cells[column].classList.toggle('asc');
-
+            const rows = Array.from(table.tBodies[0].rows);
+            
             rows.sort((a, b) => {
                 const aVal = a.cells[column].textContent;
                 const bVal = b.cells[column].textContent;
                 
-                if(column === 2) { // Se è la colonna data
-                    return isAsc ? 
-                        new Date(aVal) - new Date(bVal) : 
-                        new Date(bVal) - new Date(aVal);
+                if (column === 2) { // Ordina per anno numerico
+                    return parseInt(aVal) - parseInt(bVal);
                 }
-                return isAsc ? 
-                    aVal.localeCompare(bVal) : 
-                    bVal.localeCompare(aVal);
+                return aVal.localeCompare(bVal);
             });
 
+            // Sostituisci le righe ordinate
             table.tBodies[0].append(...rows);
         }
 
-        // Funzione About
+        // Toggle About (testo bianco su bianco - visibile solo se evidenziato)
         function toggleAbout() {
-            const aboutContent = document.getElementById('about-content');
-            aboutContent.style.display = aboutContent.style.display === 'block' ? 'none' : 'block';
+            const about = document.getElementById('about-content');
+            about.style.display = about.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
