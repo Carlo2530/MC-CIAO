@@ -3,60 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il Tuo Sito Minimalista</title>
-    <!-- Collegamento a Font Awesome per le icone -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Collegamento al tuo file CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Archivio Progetti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', monospace;
+        }
+
+        body {
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        /* Header struttura */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #000000;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: #ffffff;
+            z-index: 1000;
+        }
+
+        /* Tabella progetti */
+        .projects-table {
+            margin-top: 6rem;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .projects-table th, 
+        .projects-table td {
+            padding: 1.2rem 2rem;
+            text-align: left;
+            border-bottom: 1px solid #000000;
+            cursor: pointer;
+        }
+
+        .sortable:hover {
+            background: #f8f8f8;
+        }
+
+        /* About section */
+        #about-content {
+            display: none;
+            padding: 6rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <!-- Menu di navigazione -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Chi Sono</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contatti</a></li>
-        </ul>
-    </nav>
+    <!-- Header -->
+    <div class="header">
+        <div class="name">NOME COGNOME</div>
+        <div class="about" onclick="toggleAbout()">About</div>
+        <div class="title">PROGETTISTA LEAD</div>
+    </div>
 
-    <!-- Sezione Home -->
-    <section id="home" class="section">
-        <h1>Ciao, sono [Il Tuo Nome]</h1>
-        <p>Designer & Sviluppatore</p>
-    </section>
+    <!-- Tabella progetti -->
+    <table class="projects-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Nome Progetto ▲▼</th>
+                <th onclick="sortTable(1)">Tipologia ▲▼</th>
+                <th onclick="sortTable(2)">Data ▲▼</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Torre Panoramica</td>
+                <td>Architettura</td>
+                <td>2023-09-01</td>
+            </tr>
+            <tr>
+                <td>Parco Urbano</td>
+                <td>Urbanistica</td>
+                <td>2022-05-15</td>
+            </tr>
+            <!-- Aggiungi altri progetti -->
+        </tbody>
+    </table>
 
     <!-- Sezione About -->
-    <section id="about" class="section">
-        <h2>Chi Sono</h2>
-        <p>Una breve descrizione su di te, le tue competenze e passioni.</p>
-    </section>
+    <div id="about-content">
+        <h2>About</h2>
+        <p>Testo descrittivo sulla tua metodologia progettuale...</p>
+    </div>
 
-    <!-- Sezione Portfolio -->
-    <section id="portfolio" class="section">
-        <h2>Portfolio</h2>
-        <div class="gallery">
-            <div class="item">Progetto 1</div>
-            <div class="item">Progetto 2</div>
-            <div class="item">Progetto 3</div>
-        </div>
-    </section>
-
-    <!-- Sezione Contatti -->
-    <section id="contact" class="section">
-        <h2>Contattami</h2>
-        <div class="social-links">
-            <a href="mailto:tua@email.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-    </section>
-
-    <!-- Script per animazioni -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init(); // Inizializza le animazioni al scroll
+        // Funzione per ordinare la tabella
+        function sortTable(column) {
+            const table = document.querySelector('.projects-table');
+            const rows = Array.from(table.rows).slice(1);
+            const isAsc = table.rows[0].cells[column].classList.toggle('asc');
+
+            rows.sort((a, b) => {
+                const aVal = a.cells[column].textContent;
+                const bVal = b.cells[column].textContent;
+                
+                if(column === 2) { // Se è la colonna data
+                    return isAsc ? 
+                        new Date(aVal) - new Date(bVal) : 
+                        new Date(bVal) - new Date(aVal);
+                }
+                return isAsc ? 
+                    aVal.localeCompare(bVal) : 
+                    bVal.localeCompare(aVal);
+            });
+
+            table.tBodies[0].append(...rows);
+        }
+
+        // Funzione About
+        function toggleAbout() {
+            const aboutContent = document.getElementById('about-content');
+            aboutContent.style.display = aboutContent.style.display === 'block' ? 'none' : 'block';
+        }
     </script>
 </body>
 </html>
