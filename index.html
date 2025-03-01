@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archivio Progetti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,40 +15,103 @@
 
         body {
             background: #ffffff;
-            color: #000000; /* Testo nero */
+            color: #000000;
             line-height: 1.6;
         }
 
-        /* Header trasparente */
+        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            padding: 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             background: #ffffff;
             z-index: 1000;
+            border-bottom: 1px solid #eee;
         }
 
-        /* Tabella invisibile */
+        .header div {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Tabella progetti */
         .projects-table {
-            margin-top: 6rem;
+            margin-top: 8rem;
             width: 100%;
             border-collapse: collapse;
         }
 
         .projects-table th, 
         .projects-table td {
-            padding: 1.2rem 2rem;
+            padding: 1.5rem 2rem;
             text-align: left;
             cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
         }
 
-        /* Allineamento header e corpo */
-        .projects-table th {
-            font-weight: normal;
+        .project-row:hover {
+            background: #f8f8f8;
+        }
+
+        /* Hover image */
+        .hover-image {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            width: 300px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .project-row:hover .hover-image {
+            display: block;
+        }
+
+        /* Modal dettagli */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            max-height: 80vh;
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            z-index: 2000;
+        }
+
+        /* About Section */
+        #about-content {
+            display: none;
+            padding: 6rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: #000;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -63,55 +127,90 @@
     <table class="projects-table">
         <thead>
             <tr>
-                <th onclick="sortTable(0)">Nome Progetto</th>
-                <th onclick="sortTable(1)">Tipologia</th>
-                <th onclick="sortTable(2)">Data</th>
+                <th>Nome Progetto</th>
+                <th>Tipologia</th>
+                <th>Anno</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Torre Panoramica</td>
+            <tr class="project-row" onclick="openModal('torre-panoramica')">
+                <td>Torre Panoramica
+                    <img src="placeholder-torre.jpg" class="hover-image" alt="Anteprima progetto">
+                </td>
                 <td>Architettura</td>
                 <td>2023</td>
             </tr>
-            <tr>
-                <td>Parco Urbano</td>
+            <tr class="project-row" onclick="openModal('parco-urbano')">
+                <td>Parco Urbano
+                    <img src="placeholder-parco.jpg" class="hover-image" alt="Anteprima progetto">
+                </td>
                 <td>Urbanistica</td>
                 <td>2022</td>
             </tr>
         </tbody>
     </table>
 
+    <!-- Modal Dettagli -->
+    <div id="project-modal" class="project-modal">
+        <button onclick="closeModal()" style="float: right; margin-bottom: 1rem;">✕</button>
+        <div id="modal-content"></div>
+    </div>
+
     <!-- About Section -->
-    <div id="about-content" style="display: none; padding: 6rem 2rem;">
+    <div id="about-content">
         <h2>About</h2>
-        <p>Testo minimalista sulla tua filosofia progettuale...</p>
+        <p>Testo descrittivo sulla tua metodologia progettuale...</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
     </div>
 
     <script>
-        // Funzione di ordinamento semplificata
-        function sortTable(column) {
-            const table = document.querySelector('.projects-table');
-            const rows = Array.from(table.tBodies[0].rows);
-            
-            rows.sort((a, b) => {
-                const aVal = a.cells[column].textContent;
-                const bVal = b.cells[column].textContent;
-                
-                if (column === 2) { // Ordina per anno numerico
-                    return parseInt(aVal) - parseInt(bVal);
-                }
-                return aVal.localeCompare(bVal);
-            });
-
-            // Sostituisci le righe ordinate
-            table.tBodies[0].append(...rows);
-        }
-
-        // Toggle About (testo bianco su bianco - visibile solo se evidenziato)
+        // Funzionalità About
         function toggleAbout() {
             const about = document.getElementById('about-content');
             about.style.display = about.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Funzionalità Modal
+        const projectData = {
+            'torre-panoramica': {
+                title: 'Torre Panoramica',
+                content: `
+                    <h2>Torre Panoramica</h2>
+                    <img src="detail-torre.jpg" style="width: 100%; margin: 1rem 0;">
+                    <p>Descrizione dettagliata del progetto...</p>
+                `
+            },
+            'parco-urbano': {
+                title: 'Parco Urbano',
+                content: `
+                    <h2>Parco Urbano</h2>
+                    <img src="detail-parco.jpg" style="width: 100%; margin: 1rem 0;">
+                    <p>Descrizione dettagliata del progetto...</p>
+                `
+            }
+        };
+
+        function openModal(projectId) {
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = projectData[projectId].content;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').style.display = 'none';
+        }
+
+        // Chiudi modal cliccando fuori
+        window.onclick = function(event) {
+            const modal = document.getElementById('project-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
         }
     </script>
 </body>
