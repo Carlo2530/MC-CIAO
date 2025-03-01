@@ -13,6 +13,8 @@ body {
     color: #1a1a1a;
     line-height: 1.7;
     scroll-behavior: smooth; /* Scrolling fluido */
+    scrollbar-color: #000 #fff;
+    scrollbar-width: thin;
 }
 
 /* Navigazione minimalista */
