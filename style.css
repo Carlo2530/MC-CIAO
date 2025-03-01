@@ -135,3 +135,8 @@ nav a:hover {
         gap: 1.5rem;
     }
 }
+
+#about-content {
+    text-justify: inter-word; /* Migliora la distribuzione degli spazi */
+    word-spacing: -0.1em; /* Compatta leggermente gli spazi tra le parole */
+}
