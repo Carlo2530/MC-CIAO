@@ -210,7 +210,7 @@ body {
     }
 
     .projects-table {
-        margin-top: 4rem;
+        margin-top: 4rem !important;
     }
 
     .projects-table th, 
