@@ -80,7 +80,7 @@ body {
 /* Tabella progetti */
 .projects-table {
     table-layout: fixed;
-    margin-top: 6rem; /* distanza tra header e titoli PROJECT TYPE */
+    margin-top: 3.5rem; /* distanza tra header e titoli PROJECT TYPE */
     width: 100%;
     padding: 0rem 1rem 0rem 1rem;
 }
