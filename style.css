@@ -180,7 +180,7 @@ body {
     position: absolute; 
     max-width: 300px;
     max-height: auto;
-    z-index: 1900;
+    z-index: 1001;
     pointer-events: none;
     object-fit: contain;
     top: 55%;
