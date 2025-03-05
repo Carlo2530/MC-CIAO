@@ -168,6 +168,27 @@ body {
     flex-grow: 1; /* Occupa lo spazio rimanente e diventa scrollabile se il contenuto supera lo spazio */
 }
 
+/* Per impostare le immagini affiancate */
+.img-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Due colonne di uguale larghezza */
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.img-row a {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tre colonne di uguale larghezza */
+    gap: 1rem;
+    margin: 1rem 0;
+}
+        
+.img-row img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 /* Sezione Home hero */
 #home {
     text-align: left;
