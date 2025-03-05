@@ -16,6 +16,19 @@ body {
     scrollbar-width: thin;
 }
 
+/* Allineamento specifico per le colonne */
+.header .name {
+    text-align: left;
+    justify-content: flex-start;
+    padding-left: 0rem;
+}
+
+.header .about {
+    justify-content: left;
+    padding-left: 0rem;
+    cursor: pointer;
+}
+
 .header .social-links {
     display: flex;
     text-align: right;
