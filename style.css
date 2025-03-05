@@ -1,9 +1,13 @@
 /* Reset avanzato e font */
+@font-face {
+    font-family: 'NeueHaasDisplayLight';
+    src: url('https://github.com/Tomalt-ops/Portfolio/blob/main/neue-haas-grotesk-display-pro-cdnfonts/NeueHaasDisplayLight.ttf') format('truetype');
+}
+
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: "Fjalla One", sans-serif;
+    font-family: 'NeueHaasDisplayLight', sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -17,37 +21,60 @@ body {
     scrollbar-width: thin;
 }
 
-/* Navigazione minimalista */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.98);
-    padding: 1.5rem 2rem;
-    backdrop-filter: blur(8px); /* Effetto vetro */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    z-index: 1000;
-}
-
-nav ul {
-    list-style: none;
+.header .social-links {
     display: flex;
-    justify-content: flex-end; /* Allinea a destra */
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    justify-content: flex-end;
+    gap: 2rem; /* Spaziatura */
+    width: 100%;
+    padding-right: 2rem;
+    width: 100%;
 }
 
-nav a {
+.header .social-links a {
+    font-size: 1.4rem;
+    position: relative;
+    color: #000000 !important;
     text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.3s;
 }
 
-nav a:hover {
-    color: #666; /* Effetto hover sottile */
+.header .social-links a:visited,{
+    color: #000000 !important;
+    text-decoration: none;
+}
+
+.header .social-links a:active {
+    color: #000000 !important;
+    text-decoration: none;
+}
+
+.header .social-links a:hover {
+    transform: translateY(-6px);
+    color: #000000 !important;
+    text-decoration: none;
+}
+
+/* hover image */
+.hover-image {
+    display: none;
+    position: absolute; 
+    max-width: 300px;
+    max-height: auto;
+    z-index: 2000;
+    pointer-events: none;
+    object-fit: contain;
+    top: 55%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+}
+
+.projects-table {
+    margin-top: 140px; /* Aumenta spazio per header */
+}
+
+.projects-table th {
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    padding-bottom: 1rem;
 }
 
 /* Sezione Home hero */
@@ -100,32 +127,109 @@ nav a:hover {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+/* About*/
+#about-modal {
+    display: none; /* Nascosto di default */
 }
 
-/* Social Links sottili */
-.social-links {
-    margin-top: 3rem;
-    display: flex;
-    gap: 1.5rem;
+#about-modal .modal-content {
+    max-width: 600px;
+    padding: 40px;
+    text-align: justify;
+    line-height: 1.8;
 }
 
-.social-links a {
+#about-modal h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
     font-size: 1.5rem;
-    color: #1a1a1a;
-    transition: color 0.3s;
+    cursor: pointer;
+    padding: 5px;
 }
 
-.social-links a:hover {
-    color: #000;
+#about-content {
+    text-justify: inter-word; /* Migliora la distribuzione degli spazi */
+    word-spacing: -0.1em; /* Compatta leggermente gli spazi tra le parole */
 }
 
-/* Responsive Design */
+/* project table*/
+.projects-table th:nth-child(2),
+.projects-table td:nth-child(2) {
+    padding-left: 2rem; /* Spaziatura uniforme */
+}
+
+/* Animazione modale */
+.project-modal {
+    animation: modalFade 0.3s ease;
+    z-index: 1001; /* Sopra l'header */
+}
+
+@keyframes modalFade {
+    from { opacity: 0; transform: translate(-50%, -55%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Responsive Mobile Design */
 @media (max-width: 768px) {
     #home h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+     div {
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+
+    .header {
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+            "name social"
+            "about about";
+        padding: 1rem;
+        z-index: 1000;
+    }
+
+    .header .name {
+        grid-area: name;
+        font-size: 1rem;
+    }
+
+    .header .about {
+        grid-area: about;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+    .header .social-links {
+        grid-area: social;
+        gap: 1.5rem;
+        padding-right: 1rem;
+    }
+    
+    .header .social-links a {
+        font-size: 1.2rem;
+    }
+
+    .projects-table {
+        margin-top: 100px;
+    }
+
+    .projects-table th, 
+    .projects-table td {
+        padding: 1rem;
+        font-size: 0.9rem;
     }
 
     .section {
@@ -136,9 +240,13 @@ nav a:hover {
         justify-content: center;
         gap: 1.5rem;
     }
-}
 
-#about-content {
-    text-justify: inter-word; /* Migliora la distribuzione degli spazi */
-    word-spacing: -0.1em; /* Compatta leggermente gli spazi tra le parole */
+    #about-modal .modal-content {
+        padding: 5px;
+        font-size: 1rem;
+    }
+    
+    #about-modal h2 {
+        font-size: 1.8rem;
+    }
 }
