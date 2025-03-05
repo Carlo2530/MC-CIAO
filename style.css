@@ -46,22 +46,6 @@ body {
     text-decoration: none;
 }
 
-.header .social-links a:visited,{
-    color: #000000 !important;
-    text-decoration: none;
-}
-
-.header .social-links a:active {
-    color: #000000 !important;
-    text-decoration: none;
-}
-
-.header .social-links a:hover {
-    transform: translateY(-6px);
-    color: #000000 !important;
-    text-decoration: none;
-}
-
 /* hover image */
 .hover-image {
     display: none;
@@ -73,11 +57,7 @@ body {
     object-fit: contain;
     top: 55%;
     left: 95%;
-    transform: translate(-50%, -50%);
-}
-
-.projects-table {
-    margin-top: 140px; /* Aumenta spazio per header */
+    transform: translate(-350%, -50%);
 }
 
 .projects-table th {
