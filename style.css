@@ -150,6 +150,11 @@ body {
     flex-direction: column;
 }
 
+.project-modal button:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
 .project-modal button {
     color: #000000 !important;
     background: none !important;
