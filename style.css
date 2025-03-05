@@ -18,10 +18,11 @@ body {
 
 .header .social-links {
     display: flex;
-    justify-content: flex-end;
-    gap: 2rem; /* Spaziatura */
+    text-align: right;
+    gap: 0.7rem; /* Spaziatura */
+    justify-content: flex-end; 
     width: 100%;
-    padding-right: 2rem;
+    padding-right: 0rem;
     width: 100%;
 }
 
