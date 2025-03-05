@@ -63,20 +63,6 @@ body {
     text-decoration: none;
 }
 
-/* hover image */
-.hover-image {
-    display: none;
-    position: absolute; 
-    max-width: 300px;
-    max-height: auto;
-    z-index: 1900;
-    pointer-events: none;
-    object-fit: contain;
-    top: 55%;
-    left: 95%;
-    transform: translate(-350%, -50%);
-}
-
 /* Tabella progetti */
 .projects-table {
     table-layout: fixed;
@@ -186,6 +172,20 @@ body {
     max-height: calc(80vh - 120px);
     padding: 0rem 2rem 2rem 2rem;
     flex-grow: 1; /* Occupa lo spazio rimanente e diventa scrollabile se il contenuto supera lo spazio */
+}
+
+/* hover image */
+.hover-image {
+    display: none;
+    position: absolute; 
+    max-width: 300px;
+    max-height: auto;
+    z-index: 1900;
+    pointer-events: none;
+    object-fit: contain;
+    top: 55%;
+    left: 95%;
+    transform: translate(-350%, -50%);
 }
 
 /* Per impostare le immagini affiancate */
