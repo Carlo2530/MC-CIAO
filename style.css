@@ -1,4 +1,10 @@
 /* Reset avanzato e font */
+
+@font-face {
+    font-family: 'NeueHaasDisplayLight';
+    src: url('https://github.com/Tomalt-ops/Portfolio/blob/main/neue-haas-grotesk-display-pro-cdnfonts/NeueHaasDisplayLight.ttf') format('truetype');
+}
+
 * {
     color: #000000;
     margin: 0;
