@@ -38,6 +38,7 @@
             margin-top: 6rem; /* distanza tra header e titoli PROJECT TYPE */
             width: 100%;
             border-collapse: collapse;
+            margin-top: 140px; /* Aumenta spazio per header */
         }
         
         .projects-table th:nth-child(1),
@@ -84,20 +85,6 @@
             animation: image-appear 0.3s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        /* hover image */
-        .hover-image {
-            display: none;
-            position: absolute; 
-            max-width: 300px;
-            max-height: auto;
-            z-index: 2000;
-            pointer-events: none;
-            object-fit: contain;
-            top: 55%;
-            left: 95%;
-            transform: translate(-350%, -50%);
-        }
-        
         /* Modal dettagli */
         .project-modal {
             position: fixed;
