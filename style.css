@@ -12,8 +12,6 @@ body {
     background-color: #ffffff;
     color: #000000;
     scroll-behavior: smooth; /* Scrolling fluido */
-    scrollbar-color: #000 #fff;
-    scrollbar-width: thin;
 }
 
 /* Allineamento specifico per le colonne */
