@@ -16,7 +16,7 @@
 
 body {
     background-color: #ffffff;
-    color: #1a1a1a;
+    color: #000000;
     scroll-behavior: smooth; /* Scrolling fluido */
     scrollbar-color: #000 #fff;
     scrollbar-width: thin;
