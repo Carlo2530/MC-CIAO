@@ -259,9 +259,15 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* About*/
+/* About Section */
 #about-modal {
     display: none; /* Nascosto di default */
+}
+
+#about-modal h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 #about-modal .modal-content {
@@ -271,10 +277,21 @@ body {
     line-height: 1.8;
 }
 
-#about-modal h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-align: center;
+#about-content {
+    display: none;
+    padding: 6rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: justify;
+    hyphens: auto; /* Divisione automatica delle parole */
+    max-width: 800px; /* Larghezza ottimale per la leggibilità */
+    line-height: 1.5; /* Interlinea */
+    text-justify: inter-word; /* Migliora la distribuzione degli spazi */
+    word-spacing: -0.1em; /* Compatta leggermente gli spazi tra le parole */
+}
+
+#about-content p {
+    margin-bottom: 1.5rem;
 }
 
 .close-btn {
@@ -288,10 +305,6 @@ body {
     padding: 5px;
 }
 
-#about-content {
-    text-justify: inter-word; /* Migliora la distribuzione degli spazi */
-    word-spacing: -0.1em; /* Compatta leggermente gli spazi tra le parole */
-}
 
 /* project table*/
 .projects-table th:nth-child(2),
