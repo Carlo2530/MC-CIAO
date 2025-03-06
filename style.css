@@ -80,13 +80,13 @@ body {
 
 .projects-table th:nth-child(1),
 .projects-table td:nth-child(1) {
-    width: 58.5%; /* da commentare se si vuole dividere in 3 parti uguali */
+    width: 50%; /* da commentare se si vuole dividere in 3 parti uguali */
     text-align: left;
 }
         
 .projects-table th:nth-child(2),
 .projects-table td:nth-child(2) {
-    width: 41.5%; /* da commentare se si vuole dividere in 3 parti uguali */
+    width: 50%; /* da commentare se si vuole dividere in 3 parti uguali */
     text-align: left;
     padding-left: 0.6rem;
 }
