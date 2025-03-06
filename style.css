@@ -8,27 +8,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'NeueHaasDisplayLight';
-    src: url('https://raw.githubusercontent.com/Tomalt-ops/Portfolio/main/neue-haas-grotesk-display-pro-cdnfonts/NeueHaasDisplayLight.ttf') format('truetype');
-}
-
-/* scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-        
-::-webkit-scrollbar-track {
-    background: #ffffff;
-}
-        
-::-webkit-scrollbar-thumb {
-    background: #000000;
-    border-radius: 4px;
-}
-
-
 body {
     background-color: #ffffff;
     color: #000000;
