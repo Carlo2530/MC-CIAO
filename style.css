@@ -260,24 +260,24 @@ body {
 }
 
 /* About Section */
-#about-modal {
+.about-modal {
     display: none; /* Nascosto di default */
 }
 
-#about-modal h2 {
+.about-modal h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
     text-align: center;
 }
 
-#about-modal .modal-content {
+.about-modal .modal-content {
     max-width: 600px;
     padding: 40px;
     text-align: justify;
     line-height: 1.8;
 }
 
-#about-content {
+.about-content {
     display: none;
     padding: 6rem 2rem;
     max-width: 600px;
@@ -290,7 +290,7 @@ body {
     word-spacing: -0.1em; /* Compatta leggermente gli spazi tra le parole */
 }
 
-#about-content p {
+.about-content p {
     margin-bottom: 1.5rem;
 }
 
